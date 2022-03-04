@@ -10,7 +10,6 @@ Files included:
 - **main.py** is the scrip that provides helper functions that load the map from csv files and visualize the map and path. 
 - **map.csv** is the map file you could modify to create your own map.
 - **test_map.csv** restores a test map for doc test purpose only. Do not modify this file.
-- 
 
 ---
 
