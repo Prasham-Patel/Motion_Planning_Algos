@@ -6,13 +6,13 @@ In this assignment, you are going to implement **PRM**, **RRT** and **RRT*** alg
 
 Files included:
 
-- **PRM.py** is the file where you will implement a PRM class with four different sampling methods.
+**PRM.py** is the file where you will implement a PRM class with four different sampling methods.
 
-- **RRT.py** is the file where you will implement a RRT class for RRT and RRT*.
+**RRT.py** is the file where you will implement a RRT class for RRT and RRT*.
 
-- **main.py** is the scrip that provides helper functions that load the map from an image and call the classes and functions from **PRM.py** and **RRT.py**. You are not required to modify anything but you are encouraged to understand the code.
+**main.py** is the scrip that provides helper functions that load the map from an image and call the classes and functions from **PRM.py** and **RRT.py**. You are not required to modify anything but you are encouraged to understand the code.
 
-- **WPI_map.jpg** is a binary WPI map image with school buildings. You could replace it with some other maps you prefer.
+**WPI_map.jpg** is a binary WPI map image with school buildings. You could replace it with some other maps you prefer.
 
 ## Instruction
 

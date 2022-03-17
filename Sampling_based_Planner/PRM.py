@@ -4,7 +4,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import networkx as nx
-from math import sin, cos, atan2
 import copy
 from scipy import spatial
 
@@ -23,7 +22,6 @@ class PRM:
 
 
     def check_collision(self, p1, p2):
-
         '''Check if the path between two points collide with obstacles
 
         arguments:
@@ -35,10 +33,8 @@ class PRM:
         '''
         if self.dis(p1, p2) == 0:
             return True
-
         inc = 1/self.dis(p1, p2)
         i = copy.deepcopy(inc)
-
         while i < 1:
             row = p1[0]*i + (p2[0]*(1-i))
             col = p1[1]*i + (p2[1]*(1-i))
@@ -107,7 +103,7 @@ class PRM:
         # Initialize graph
         self.graph.clear()
         index = 0
-        while index < n_pts:
+        while len(self.samples) < n_pts:
             new_sample = [np.random.randint(0, self.size_row-1), np.random.randint(0, self.size_col-1)]
             if (self.map_array[new_sample[0], new_sample[1]] == 0):
                 continue
@@ -128,7 +124,7 @@ class PRM:
         # Initialize graph
         self.graph.clear()
         index = 0
-        while index < n_pts:
+        while len(self.samples) < n_pts:
             new_sample_1 = [np.random.randint(0, self.size_row-1), np.random.randint(0, self.size_col-1)]
             new_sample_2 = np.random.normal(new_sample_1, scale = 7)
             if new_sample_2[0] > self.size_row or new_sample_2[1] > self.size_col:
@@ -142,9 +138,6 @@ class PRM:
                 index += 1
 
 
-
-        ### YOUR CODE HERE ###
-
     def bridge_sample(self, n_pts):
         '''Use bridge sampling and store valid points
         arguments:
@@ -157,7 +150,7 @@ class PRM:
         # Initialize graph
         self.graph.clear()
         index = 0
-        while index < n_pts:
+        while len(self.samples) < n_pts:
             new_sample_1 = [np.random.randint(0, self.size_row - 1), np.random.randint(0, self.size_col - 1)]
             new_sample_2 = np.random.normal(new_sample_1, scale=7)
             if new_sample_2[0] > self.size_row or new_sample_2[1] > self.size_col:
@@ -166,7 +159,6 @@ class PRM:
             if self.map_array[new_sample_1[0], new_sample_1[1]] == 0 and self.map_array[new_sample_1[0], new_sample_1[1]] == 0:
                 mid_point = [int((new_sample_1[0] + new_sample_2[0])/2), int((new_sample_1[1] + new_sample_2[1])/2)]
                 if self.map_array[mid_point[0], mid_point[1]] == 1:
-                    # print(mid_point)
                     self.samples.append(mid_point)
                     index += 1
                     print(index)
@@ -231,7 +223,6 @@ class PRM:
         elif sampling_method == "bridge":
             self.bridge_sample(n_pts)
 
-        ### YOUR CODE HERE ###
         self.kdtree = spatial.KDTree(self.samples)
         index = 0
         pairs = []
@@ -243,15 +234,11 @@ class PRM:
                     pairs.append((index, ID, self.dis(self.samples[ID], self.samples[index])))
             index += 1
 
-
-        # print(pairs)
-
         # Find the pairs of points that need to be connected
         # and compute their distance/weight.
         # Store them as
         # pairs = [(p_id0, p_id1, weight_01), (p_id0, p_id2, weight_02),
         #          (p_id1, p_id2, weight_12) ...]
-        # pairs = []
 
         # Use sampled points and pairs of points to build a graph.
         # To add nodes to the graph, use
@@ -264,7 +251,7 @@ class PRM:
         # current point in self.samples
         # For example, for self.samples = [(1, 2), (3, 4), (5, 6)],
         # p_id for (1, 2) is 0 and p_id for (3, 4) is 1.
-        # self.graph.add_nodes_from(range(0, len(self.samples)))
+
         self.graph.add_weighted_edges_from(pairs)
 
         # Print constructed graph information
