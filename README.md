@@ -12,39 +12,37 @@ It should be noted that the priority queue is ordered according to ‘k’ value
 D* works faster than A* because it does not do complete replanning, rather it updates the path around the newly discovered obstacle node using the previously calculated ‘k’ value and ‘h’ value for other nodes.
 
 
-- Figure 1: final path for map-1
 
- ![image](https://user-images.githubusercontent.com/91484142/163594451-668a1cb5-fac3-4687-92d3-4d4dd6610f01.png)
-  
-- Figure 2: final path for map-2
+| ![image](https://user-images.githubusercontent.com/91484142/163594451-668a1cb5-fac3-4687-92d3-4d4dd6610f01.png)|
+|:--:|
+| <b>**Figure 1: final path for map-1**</b>|
 
- ![image](https://user-images.githubusercontent.com/91484142/163594464-ee4a2222-1372-41dd-9749-a24ae1896d90.png)    
-  
--   Figure 3: final path for map-3
-  
- ![image](https://user-images.githubusercontent.com/91484142/163594485-a51f027d-290f-4d34-8b65-d51583150225.png)
-  
+| ![image](https://user-images.githubusercontent.com/91484142/163594464-ee4a2222-1372-41dd-9749-a24ae1896d90.png)|
+|:--:|
+|<b>**Figure 2: final path for map-1**</b>|
 
 
-
+| ![image](https://user-images.githubusercontent.com/91484142/163594485-a51f027d-290f-4d34-8b65-d51583150225.png)|
+|:--:|
+|<b>**Figure 3: final path for map-3**</b>| 
 
 ## Informed RRT*
 
 RRT* when generating new samples randomly even when it has a known path, while Informed RRT* generates new sample randomly within an ellipse whose dimensions are decided on the basis of existing path.
 
  
-- Figure 4: Informed RRT*
 
-![image](https://user-images.githubusercontent.com/91484142/163594896-8d542165-c2e6-4341-9e08-ea24aca36772.png)
+| ![image](https://user-images.githubusercontent.com/91484142/163594896-8d542165-c2e6-4341-9e08-ea24aca36772.png)|
+|:--:|
+|<b>**Figure 4: Informed RRT***</b>| 
 
-- Figure 5: RRT*
+| ![image](https://user-images.githubusercontent.com/91484142/163594913-5e29bc7c-7eac-4e20-9706-1ee64d523e74.png)|
+|:--:|
+|<b>**Figure 5: RRT***</b>| 
 
-![image](https://user-images.githubusercontent.com/91484142/163594913-5e29bc7c-7eac-4e20-9706-1ee64d523e74.png)
-
- 
-- Figure 6: RRT
-
-![image](https://user-images.githubusercontent.com/91484142/163594934-a3c17c09-3657-4ecf-a3c2-93f7ae9afbc8.png)
+| ![image](https://user-images.githubusercontent.com/91484142/163594934-a3c17c09-3657-4ecf-a3c2-93f7ae9afbc8.png)|
+|:--:|
+|<b>**Figure 6: RRT**</b>| 
 
 
 As can be seen from the figure the node exploration in Informed RRT* is much more focused around the discovered path. While for RRT* the sampling is almost evenly distributed on the entire map
