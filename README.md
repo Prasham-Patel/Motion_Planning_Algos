@@ -1,7 +1,78 @@
 # RBE 550 Motion Planning
-# Advance Algorithm Implementation
 
-Submitted by: Prasham Patel
+# Search Algorithms Implementation
+
+## PRM
+
+Four sampling method have been applied, such that the produce the given number of points. The new node makes connection with nearest 8 nodes given that the path formed is not obstructed. They are as listed below:
+
+### Uniform Sampling:
+
+![image](https://user-images.githubusercontent.com/91484142/165418151-18f1fcbe-2fcb-4622-8c84-423560dfe55b.png)
+
+**Advantage:** 
+- 	Simple method which can cover most of the part of the map 				consistently, as there is no randomness in sampling.
+	
+**Disadvantage:**
+		-	Might miss to sample narrow path, as specially when the path is 					between two sampling lengths. 
+		-	Need small sampling length for more complex environment.
+
+
+### Random Sampling:
+![image](https://user-images.githubusercontent.com/91484142/165418161-d0d0aad5-386e-45bd-aa03-9b3a7b17bd44.png)
+
+ 
+
+**Advantage:** 
+- 	Simplest method which can cover most of the part of the map .
+	
+**Disadvantage:**
+		-	Might miss to sample narrow path.
+		-	More number of samples required for complex environment.
+
+### Gaussian Sampling:
+
+![image](https://user-images.githubusercontent.com/91484142/165418183-63e3ac90-0497-44cb-b580-201b1f9dc407.png)
+ 
+
+**Advantage:** 
+- 	Gives an idea about the location of obstacles.
+-	Can find path with narrow passages.
+	
+**Disadvantage:**
+		-	Generated path flows around obstacles, like bug algorithm. 
+
+### Bridge sampling:
+
+![image](https://user-images.githubusercontent.com/91484142/165418382-c06c1db0-d3cd-4151-b3b8-89b86bd6d4fa.png)
+
+
+ 
+**Advantage:**
+-	Can find path with narrow passages.
+	
+**Disadvantage:**
+		-	Only samples near narrow passages, bad for more open 					environment
+
+### RRT
+
+![image](https://user-images.githubusercontent.com/91484142/165418226-299f4d79-e445-495c-9be0-b4dbf7e857de.png)
+RRT algorithm randomly generates nodes from start position and connects them to the nearest available node given path is not obstructed. If the path length is more than step-size specified than a new node is created on the previous path such that its distance from parent node is equal to step size. Below is the image of implementation:
+
+ 
+### RRT*
+
+![image](https://user-images.githubusercontent.com/91484142/165418251-657d4a4c-f37c-40f9-8e55-92f1d36b3aa1.png)
+
+RRT* has 2 extra features than RRT, those are:
+
+-	Connecting the new node with the node which results into least cost rather than connecting to the nearest one.
+-	Rewiring the nodes within a given radius of the new node to the parent node of new node if the over all cost decreases. 	
+
+This changes result into a over all more optimum path from start to goal.
+
+
+# Advance Algorithm Implementation
 
 ## D* Algorithm
 
